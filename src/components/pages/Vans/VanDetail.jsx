@@ -1,5 +1,29 @@
-export default function VanDetail(){
-    return(
-        <h1>Van detail goes here</h1>
+import {useParams} from "react-router-dom";
+import React from "react";
+
+export default function VanDetail() {
+
+    const params = useParams()
+    const [van, setVan] = React.useState(null)
+
+    React.useEffect(() => {
+        fetch(`/api/vans/${params.id}`)
+            .then(res => res.json())
+            .then(data => setVan(data.vans))
+    }, [params.id])
+
+    return (
+        <div className="van-detail-container">
+            {van ? (
+                <div className="van-detail">
+                    <img src={van.imageUrl} alt={`Image of ${van.name}`}/>
+                    <i className={`van - type ${van.type} selected`}></i>
+                    <h2>{van.name}</h2>
+                    <p className="van-price"><span>${van.price}</span>/day</p>
+                    <p>{van.description}</p>
+                    <button className="link-button">Rent this van</button>
+                </div>) : <h2>Loading...</h2>}
+        </div>
     )
 }
+

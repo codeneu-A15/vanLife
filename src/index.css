@@ -354,6 +354,7 @@ i[class*="van-type-"] {
     padding: 5px 20px;
 }
 
+
 .host-nav a:hover {
     color: #161616;
     text-decoration: underline;
@@ -739,4 +740,10 @@ img.graph {
 .host-reviews .review-star {
     color: #ff8c38;
     margin-right: 5px;
+}
+
+.active-link{
+    font-weight: bold;
+    text-decoration: underline;
+    color: #161616;
 }
